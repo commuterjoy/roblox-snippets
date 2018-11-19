@@ -1,0 +1,21 @@
+-- https://developer.roblox.com/articles/Leaderboards
+
+local function onPlayerJoin(player)
+	local leaderstats = Instance.new("Folder")
+	leaderstats.Name = "leaderstats"
+	leaderstats.Parent = player
+	local gold = Instance.new("IntValue")
+	gold.Name = "Gold"
+	gold.Value = 0
+	gold.Parent = leaderstats
+end
+
+game.Players.PlayerAdded:Connect(onPlayerJoin)
+
+-- then later
+
+local Players = game:GetService("Players")
+local player = Players:GetPlayerFromCharacter(hit.Parent)
+if player then
+  player.leaderstats.Gold.Value = player.leaderstats.Gold.Value + 1
+end
